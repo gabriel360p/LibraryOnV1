@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>LibraryOn</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="{% url 'livraria:tperfil' usuario.id%}">{{usuario.nome}}</a>		
+					</li>
+					<li class="breadcrumb-item">
+						<a href="{% url 'livraria:tprateleira' usuario.id%}">Livraria</a>		
+					</li>
+					<li class="breadcrumb-item">
+						<a href="{% url 'livraria:index'%}">Sair</a>		
+					</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2>
+					Olá Mundo!
+				</h2>
+				<p>
+					Livros são os mais silenciosos e constantes amigos, os mais acessíveis e sábios conselheiros, e os mais pacientes professores. Pois não importa e época, as suas palavras estão registradas e acessíveis até o fim
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">Learn more</a>
+				</p>
+			</div>
+		</div>
+	</div>
+<div class="card-columns">
+{%for livro in bdlivros%}
+	<div class="card border-dark mb-3" style="max-width: 18rem;">
+	  <div class="card-header">R${{livro.preco}}</div>
+	  <div class="card-body text-dark">
+	    <h5 class="card-title">Titulo: {{livro.titulo}}</h5>
+	    <p class="card-text">Clique em ver para saber mais sobre o livro!</p>
+	    <hr>
+	    <p>Categoria: {{livro.categoria}}</p>
+	    <p>Editora: {{livro.editora}}</p>
+	    <p>Publicação: {{livro.publicacao}}</p>
+	    <p>Autor: {{livro.autor}}</p>
+
+	    <a href="{% url 'livraria:tverlivro' livro.id usuario.id %}">
+			<button type="button" class="btn btn-outline-dark">Ver</button>
+		</a>
+
+		{{VerAlert}}
+
+
+		</a>
+	  </div>
+	</div>
+{% endfor %}
+</div>
+</body>
+</html>
+

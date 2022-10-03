@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>LibraryOn</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'livraria:index' %}">LibraryOn</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Crescimento</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+    	Já tem conta? Faça o <a href="{% url 'livraria:index' %}"> <strong> Login! </strong> </a> <!-- levando para página de login -->
+    </span>
+  </div>
+</nav>
+</div>
+<div class="container-fluid">
+
+  <form method="POST" action="{% url 'livraria:defbtnregistro' %}">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col">
+          <label for="inputName">Nome</label>
+        <input type="text" class="form-control" placeholder="Nome" value="{{kepNome}}" name="nome">
+      </div>
+      <div class="col">
+          <label for="inputName">Sobrenome</label>
+        <input type="text" class="form-control" value="{{kepSobrenome}}" placeholder="Sobrenome" name="sobrenome">
+      </div>
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" value="{{kepEmail}}" name="email">
+{{EmailAlert}}
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Senha</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" value="{{kepSenha}}" name="senha">
+    </div>
+  <input type="submit" class="btn btn-primary" value="Registrar">
+</form>
+</div>
+
+</body>
+</html>

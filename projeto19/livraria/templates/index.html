@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>LibraryOn</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'livraria:index' %}">LibraryOn</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Crescimento</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+    	Já Ainda não tem conta? Faça o <a href="{% url 'livraria:tregistro' %}"> <strong> Registro! </strong> </a> <!-- levando para página de cadastro -->
+    </span>
+  </div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="jumbotron">
+						<h2>
+							Olá Mundo!
+						</h2>
+						<p>
+							Bem vindo a LibraryOn! Neste site você pode encontrar livros incríveis!
+						</p>
+						<p>
+							<a class="btn btn-primary btn-large" href="#">Saiba Mais</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<h3 style="text-align: center;">Login</h3>
+					<form role="form" method="POST" action="{% url 'livraria:defbtnlogin' %}">
+						{% csrf_token %}
+						<div class="form-group">
+							<label for="exampleInputEmail1">
+								Email
+							</label>
+							<input type="email" class="form-control" value="{{kepEmail}}" id="exampleInputEmail1" name="email" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">
+								Senha
+							</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" name="senha" value="{{kepSenha}}" />
+						</div>
+						<button type="submit" class="btn btn-primary">
+							Entrar
+						</button>
+
+						{{SenhaAlert}}
+						{{EmailAlert}}
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
